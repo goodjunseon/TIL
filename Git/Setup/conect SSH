@@ -1,0 +1,35 @@
+GitHub(원격저장소)에 로컬저장소의 파일을 올리려면 Github와 연결을 해야한다.
+연결 방식은 2가지가 있다.
+1. HTTPS 방식
+2. SSH 방식
+SSH방식이 보안상 더 좋고 비밀번호 입력이 필요없어서 SSH 방식으로 연결한다.
+
+1. 내 로컬 PC에 SSH키가 생성되어있는지 확인하기 
+: ls -al ~/.ssh
+만약 로컬키가 있다면 id_rsa, id_rsa.pub 파일이 있을 것이다.
+
+2. 새로운 SSH 키 생성하기
+: ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+위의 명령어를 입력하면 3번의 입력을 받는다.
+1번 : 저장 위치
+2번 : password
+3번 : password again
+여기서 password는 설정하지 않는다. 그냥 enter 입력.
+
+3. SSH 키를 github에 등록하기
+
+SSH 공개키(rsa.pub) 확인
+: cat ~/.ssh/id_rsa.pub
+기존 공개키 삭제
+: rm -rf ~/.ssh/id_rsa ~/.ssh/id_rsa.pub
+SSH 연결 테스트
+: ssh -T git@github.com
+
+github에 ssh 키 설정하는 방법
+setting - access - SSH and GPG Keys에서 New SSH Key 클릭
+Title 설정하고, key값에 id_rsa.pub(SSH 공개키)를 입력하면 된다.
+절대로 개인키를 타인에게 공유해서는 안된다.
+
+공개키 출력 명령어 :
+  cat ~/.ssh/id_rsa.pub
+
