@@ -1,0 +1,16 @@
+Mac 환경에서 Git 설치하는 방법
+Mac OS에서 기본적으로 git을 설치를 해준다. 그러나 최신 버전으로 git을 설치하기 위해서 터민러에서 아래와 같은 명령어를 입력한다.
+git install : "brew install git"
+git version check : "git --version"
+
+만약 "brew install git" 에서 명령어가 확인되지 않는다면 Homebrew가 미설치되어 있는 상태이므로 Homebrew를 설치해준다.
+homebrew install : "/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+homebrew version check : "brew --version"
+
+homebrew가 설치되어있는지 확인하는 방법 : "ls /opt/homebrew"
+출력이 된다면 : 설치된 것이므로 환경 변수 문제일 수 있다.
+
+
+homebrew 환경 변수 설정하는 방법 : 
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+eval "$(/opt/homebrew/bin/brew shellenv)"
