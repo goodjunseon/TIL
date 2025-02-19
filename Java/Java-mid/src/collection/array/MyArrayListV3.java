@@ -1,26 +1,26 @@
-package collection.arrays;
+package collection.array;
 
 import java.util.Arrays;
 
-public class MyArrayListV4 <E> {
+public class MyArrayListV3 {
     private static final int DEFAULT_CAPACITY = 5;
 
     private Object[] elementData;
     private int size = 0;
 
-    public MyArrayListV4() {
+    public MyArrayListV3() {
         elementData = new Object[DEFAULT_CAPACITY];
     }
 
-    public MyArrayListV4(int initialCapacity) {
+    public MyArrayListV3(int initialCapacity) {
         elementData = new Object[initialCapacity];
     }
 
     public int size() {
-        return size;
+        return  size;
     }
 
-    public void add(E e) {
+    public void add(Object e) {
         if (size == elementData.length) {
             grow();
         }
@@ -28,7 +28,8 @@ public class MyArrayListV4 <E> {
         size++;
     }
 
-    public void add(int index, E e) {
+    //코드 추가
+    public void add(int index, Object e) {
         if(size == elementData.length) {
             grow();
         }
@@ -37,53 +38,52 @@ public class MyArrayListV4 <E> {
         size++;
     }
 
-    //요소의 마지막부터 index까지 오른쪽으로 밀기
+    private void grow() {
+        int oldCapacity = elementData.length;
+        int newCapacity = oldCapacity * 2;
+
+        elementData = Arrays.copyOf(elementData, newCapacity);
+    }
+
     private void shiftRightFrom(int index) {
-        for (int i = size; i > index; i--) {
+        for(int i = size; i > index; i--) {
             elementData[i] = elementData[i-1];
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public E get (int index) {
-            return (E) elementData[index];
+    public Object get(int index) {
+        return elementData[index];
     }
 
-    public E set(int index, E element) {
-        E oldValue = get(index);
+    public Object set(int index, Object element) {
+        Object oldValue = get(index);
         elementData[index] = element;
         return oldValue;
     }
 
-    public E remove(int index) {
-        E oldValue = get(index);
+    //코드 추가
+    public Object remove(int index) {
+        Object oldValue = get(index);
         shiftLeftFrom(index);
-
         size--;
         elementData[size] = null;
         return oldValue;
     }
 
-    // 요소의 index부터 마지막까지 왼쪽으로 밀기
+    //코드 추가, 요소의 index부터 마지막까지 왼쪽으로 밀기
     private void shiftLeftFrom(int index) {
-        for (int i = index; i < size; i++) {
+        for (int i = index; i < size-1; i++) {
             elementData[i] = elementData[i+1];
         }
     }
 
-    public int idexOf(E o) {
+    public int indexOf(Object o) {
         for (int i = 0; i < size; i++) {
-            if (o.equals(elementData[i])) {
+            if(o.equals(elementData[i])){
                 return i;
             }
         }
-        return -1;
-    }
-
-    public void grow() {
-        int oldCapacity = elementData.length;
-        int newCapacity = oldCapacity * 2;
-        elementData = Arrays.copyOf(elementData,newCapacity);
+        return  -1;
     }
 
     @Override

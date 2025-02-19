@@ -1,4 +1,4 @@
-package collection.arrays;
+package collection.array;
 
 public class MyArrayListV4Main {
     public static void main(String[] args) {

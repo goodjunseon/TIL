@@ -1,18 +1,18 @@
-package collection.arrays;
+package collection.array;
 
 import java.util.Arrays;
 
-public class MyArrayListV2 {
+public class MyArrayListV1 {
     private static final int DEFAULT_CAPACITY = 5;
 
     private Object[] elementData;
     private int size = 0;
 
-    public MyArrayListV2() {
+    public MyArrayListV1() {
         elementData = new Object[DEFAULT_CAPACITY];
     }
 
-    public MyArrayListV2(int initialCapacity) {
+    public MyArrayListV1(int initialCapacity) {
         elementData = new Object[initialCapacity];
     }
 
@@ -21,19 +21,8 @@ public class MyArrayListV2 {
     }
 
     public void add(Object e) {
-        // 코드 추가
-        if(size == elementData.length) {
-            grow();
-        }
         elementData[size] = e;
         size++;
-    }
-
-    // 코드 추가
-    private void grow() {
-        int oldCapacity = elementData.length;
-        int newCapacity = oldCapacity*2;
-        elementData = Arrays.copyOf(elementData, newCapacity);
     }
 
     public Object get(int index) {
@@ -57,9 +46,10 @@ public class MyArrayListV2 {
 
     @Override
     public String toString() {
-        return "MyArrayListV2{" +
+        return "MyArrayListV1{" +
                 "elementData=" + Arrays.toString(elementData) +
                 ", size=" + size +
                 '}';
     }
 }
+

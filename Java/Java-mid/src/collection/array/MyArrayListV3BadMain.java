@@ -1,4 +1,4 @@
-package collection.arrays;
+package collection.array;
 
 public class MyArrayListV3BadMain {
     // 안좋은 예 : List를 Object로 받기 떄문에 아무 데이터나 입력 가능
