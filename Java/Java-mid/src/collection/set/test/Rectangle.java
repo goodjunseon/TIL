@@ -31,5 +31,4 @@ public class Rectangle {
         return Objects.hash(width, height);
     }
 
-    //코드 작성
 }
